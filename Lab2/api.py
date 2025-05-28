@@ -6,6 +6,8 @@ from cipher.playfair import PlayFairCipher
 
 app = Flask (__name__)
 
+
+## CAESAR
 caesar_cipher = CaesarCipher()
 
 @app.route("/api/caesar/encrypt", methods=["POST"])
@@ -24,6 +26,8 @@ def caesar_decrypt():
     decrypted_text = caesar_cipher.decrypt_text(cipher_text, key)
     return jsonify({'decrypted_message': decrypted_text})
 
+
+## VIGENERE
 vigenere_cipher = VigenereCipher()
 
 @app.route("/api/vigenere/encrypt", methods = ['POST'])
@@ -42,6 +46,8 @@ def vigenere_decrypt():
     decrypted_text = vigenere_cipher.vigenere.decrypt(cipher_text, key)
     return jsonify({'decrypted_text': decrypted_text})
 
+
+## RAILFENCE
 railfence_cipher = RailFenceCipher()
 
 @app.route('/api/railfence/encrypt', methods = ['POST'])
@@ -60,6 +66,8 @@ def decrypt():
     decrypted_text = railfence_cipher.rail_fence_decrypt(cipher_text, key)
     return jsonify({'decrypt_text': decrypted_text})
 
+
+## PLAYFAIR
 playfair_cipher = PlayFairCipher()
 
 @app.route('/api/playfair/creatematrix', methods = ['POST'])
